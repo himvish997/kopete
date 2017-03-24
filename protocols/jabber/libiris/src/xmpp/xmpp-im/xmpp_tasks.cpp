@@ -32,7 +32,6 @@
 
 using namespace XMPP;
 
-
 static QString lineEncode(QString str)
 {
 	str.replace(QRegExp("\\\\"), QStringLiteral("\\\\"));   // backslash to double-backslash
@@ -511,7 +510,6 @@ bool JT_Roster::take(const QDomElement &x)
 	return false;
 }
 
-
 //----------------------------------------------------------------------------
 // JT_PushRoster
 //----------------------------------------------------------------------------
@@ -538,7 +536,6 @@ bool JT_PushRoster::take(const QDomElement &e)
 
 	return true;
 }
-
 
 //----------------------------------------------------------------------------
 // JT_Presence
@@ -661,7 +658,6 @@ void JT_Presence::onGo()
 	send(tag);
 	setSuccess();
 }
-
 
 //----------------------------------------------------------------------------
 // JT_PushPresence
@@ -789,7 +785,6 @@ bool JT_PushPresence::take(const QDomElement &e)
 		}
 	}
 
-
 	if (stamp.isValid()) {
 		if (client()->manualTimeZoneOffset()) {
 			stamp = stamp.addSecs(client()->timeZoneOffset() * 3600);
@@ -804,7 +799,6 @@ bool JT_PushPresence::take(const QDomElement &e)
 
 	return true;
 }
-
 
 //----------------------------------------------------------------------------
 // JT_Message
@@ -865,7 +859,6 @@ void JT_Message::onGo()
 	send(e);
 	setSuccess();
 }
-
 
 //----------------------------------------------------------------------------
 // JT_PushMessage
@@ -934,7 +927,6 @@ bool JT_PushMessage::take(const QDomElement &e)
 
 	return true;
 }
-
 
 //----------------------------------------------------------------------------
 // JT_GetServices
@@ -1020,7 +1012,6 @@ bool JT_GetServices::take(const QDomElement &x)
 
 	return true;
 }
-
 
 //----------------------------------------------------------------------------
 // JT_VCard
@@ -1129,7 +1120,6 @@ bool JT_VCard::take(const QDomElement &x)
 
 	return true;
 }
-
 
 //----------------------------------------------------------------------------
 // JT_Search
@@ -1308,7 +1298,6 @@ bool JT_Search::take(const QDomElement &x)
 	return true;
 }
 
-
 //----------------------------------------------------------------------------
 // JT_ClientVersion
 //----------------------------------------------------------------------------
@@ -1377,7 +1366,6 @@ const QString & JT_ClientVersion::os() const
 {
 	return v_os;
 }
-
 
 //----------------------------------------------------------------------------
 // JT_EntityTime
@@ -1455,7 +1443,6 @@ int JT_EntityTime::timezoneOffset() const
 {
 	return tzo;
 }
-
 
 //----------------------------------------------------------------------------
 // JT_ServInfo
@@ -1548,7 +1535,6 @@ bool JT_ServInfo::take(const QDomElement &e)
 
 	return false;
 }
-
 
 //----------------------------------------------------------------------------
 // JT_Gateway
@@ -1934,7 +1920,6 @@ bool JT_DiscoPublish::take(const QDomElement &x)
 	return true;
 }
 
-
 // ---------------------------------------------------------
 // JT_BoBServer
 // ---------------------------------------------------------
@@ -1969,7 +1954,6 @@ bool JT_BoBServer::take(const QDomElement &e)
 	}
 	return false;
 }
-
 
 //----------------------------------------------------------------------------
 // JT_BitsOfBinary
@@ -2177,7 +2161,6 @@ bool JT_CaptchaChallenger::take(const QDomElement &x)
 
 	return true;
 }
-
 
 //---------------------------------------------------------------------------
 // JT_CaptchaSender
