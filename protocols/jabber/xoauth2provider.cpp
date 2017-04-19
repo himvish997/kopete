@@ -18,12 +18,8 @@
 #include <QNetworkReply>
 #include <qca.h>
 
-#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
-#include <qjson/parser.h>
-#else
 #include <QJsonDocument>
 #include <QUrlQuery>
-#endif
 
 #include "xoauth2provider.h"
 
@@ -251,20 +247,12 @@ public:
 private:
     void requestAccessToken()
     {
-#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
-        QUrl query;
-#else
         QUrlQuery query;
-#endif
         query.addQueryItem(QStringLiteral("client_id"), clientId);
         query.addQueryItem(QStringLiteral("client_secret"), QString::fromUtf8(clientSecretKey.toByteArray()));
         query.addQueryItem(QStringLiteral("refresh_token"), QString::fromUtf8(refreshToken.toByteArray()));
         query.addQueryItem(QStringLiteral("grant_type"), QStringLiteral("refresh_token"));
-#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
-        const QByteArray &data = query.encodedQuery();
-#else
         const QByteArray &data = query.toString(QUrl::FullyEncoded).toUtf8();
-#endif
         QNetworkRequest request(requestUrl);
         request.setHeader(QNetworkRequest::ContentTypeHeader, QLatin1String("application/x-www-form-urlencoded"));
         QNetworkReply *reply = manager->post(request, data);
