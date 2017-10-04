@@ -214,7 +214,7 @@ void HistoryPlugin::convertOldHistory()
                                         doc.doctype().save(stream, 1);
                                         doc.documentElement().save(stream, 1);   // QDomDocument::save() override stream codec to UTF-8
                                         file.write(buf.toUtf8());
-                                        file.finalize();
+                                        file.commit();
                                     }
                                 }
 
@@ -276,7 +276,7 @@ void HistoryPlugin::convertOldHistory()
                             doc.doctype().save(stream, 1);
                             doc.documentElement().save(stream, 1);   // QDomDocument::save() override stream codec to UTF-8
                             file.write(buf.toUtf8());
-                            file.finalize();
+                            file.commit();
                         }
                     }
                 }
